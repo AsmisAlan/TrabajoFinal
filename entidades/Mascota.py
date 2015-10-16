@@ -3,6 +3,10 @@
 Created on Fri Oct  9 16:04:49 2015
 
 @author: alan
+
+
+
+
 """
 
 class Mascota(object):
@@ -13,20 +17,20 @@ class Mascota(object):
          self.__peso = peso
          self.__ID = ID
     
-     def GetNombre(self):
+     def get_nombre(self):
          self.__nombre
         
-     def GetRaza(self):
+     def get_raza(self):
          self.__raza
          
-     def GetID(self):
+     def get_id(self):
          self.__ID
          
-     def GetTelefono(self):
+     def get_peso(self):
          self.__peso
          
          
-     def SetNombre(self,nombre):
+     def set_nombre(self,nombre):
          self.__nombre = nombre
         
      def SetRaza(self,raza):
