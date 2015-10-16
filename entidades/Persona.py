@@ -14,33 +14,33 @@ class Persona(object):
          self.__telefono = telefono
          self.__direc = direc
     
-     def GetNombre(self):
+     def get_nombre(self):
          self.__nombre
         
-     def GetApellido(self):
+     def get_apellido(self):
          self.__apellido
          
-     def GetDNI(self):
+     def get_DNI(self):
          self.__DNI
          
-     def GetTelefono(self):
+     def get_telefono(self):
          self.__telefono
          
-     def GetDirec(self):
+     def get_direc(self):
          self.__direc
          
-     def SetNombre(self,nombre):
+     def set_nombre(self,nombre):
          self.__nombre = nombre
         
-     def SetApellido(self,apellido):
+     def set_apellido(self,apellido):
          self.__apellido = apellido
          
-     def SetDNI(self,DNI):
+     def set_DNI(self,DNI):
          self.__DNI = DNI
          
-     def SetTelefono(self , telefono):
+     def set_telefono(self , telefono):
          self.__telefono = telefono
          
-     def SetDirec(self , direc):
+     def set_direc(self , direc):
          self.__direc = direc
          

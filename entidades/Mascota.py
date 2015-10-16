@@ -11,11 +11,11 @@ Created on Fri Oct  9 16:04:49 2015
 
 class Mascota(object):
     
-     def __init__(self,nombre , raza , peso , ID):
+     def __init__(self,nombre , raza , peso , DNI):
          self.__nombre = nombre
          self.__raza = raza
          self.__peso = peso
-         self.__ID = ID
+         self.__ID = DNI
     
      def get_nombre(self):
          self.__nombre
@@ -33,11 +33,11 @@ class Mascota(object):
      def set_nombre(self,nombre):
          self.__nombre = nombre
         
-     def SetRaza(self,raza):
+     def set_raza(self,raza):
          self.__raza = raza
          
-     def SetPeso(self,peso):
+     def set_peso(self,peso):
          self.__peso = peso
          
-     def SetID(self , ID):
+     def set_ID(self , ID):
          self.__ID = ID
