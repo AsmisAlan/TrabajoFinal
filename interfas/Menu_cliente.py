@@ -9,11 +9,11 @@ import sys
 
 from PyQt4 import QtCore, QtGui, uic
 
-from entidades.Cliente import Cliente
-from control.Control import Control
+from entidades import Cliente
+from control import Control
+
 
 menu_cliente = uic.loadUiType('Menu_cliente.ui')[0]
-
 
 class Menu_Cliente(QtGui.QWidget,menu_cliente):
     
@@ -32,14 +32,14 @@ class Menu_Cliente(QtGui.QWidget,menu_cliente):
 
 submenu_alta = uic.loadUiType('Submenu_alta.ui')[0]
 
-class Submenu_alta(QtGui.QWidget, submenu_alta):
+class Submenu_alta(QtGui.QWidget, submenu_alta,Control):
     
     def __init__ (self, parent = None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
         self.boton_guardar.clicked.connect(self.guardar)
         
-    def guardar(self):
+    def guardar(self,Control):
         nombre = self.linea_nombre.getText()
         apellido = self.linea_apellido.getText()
         dni = self.linea_dni.getText()
@@ -49,7 +49,7 @@ class Submenu_alta(QtGui.QWidget, submenu_alta):
         nuevo_cliente = Cliente(nombre, apellido, dni, telefono,direccion)
         
         if not(Control.control_cliente(nuevo_cliente)):
-             Control.lista_cliente.append(nuevo_cliente)
+             self.close()
         else:
             error = Error_cliente()
             error.show()

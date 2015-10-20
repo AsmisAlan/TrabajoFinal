@@ -31,11 +31,12 @@ class Control():
            return True
 
     
-    def control_cliente(nuevo_cliente, self.lista_cliente):
+    def control_cliente(self,nuevo_cliente, lista_cliente):
         for cliente in lista_cliente:
             if (nuevo_cliente.get_DNI() == cliente.get_DNI()):
                 return True
         else:
+            self.lista_cliente.append(nuevo_cliente)
             return False
             
         
