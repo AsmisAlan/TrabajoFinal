@@ -6,7 +6,8 @@ Created on Sat Oct 17 20:30:41 2015
 """
 
 class Control():
-
+    lista_cliente = []
+    
 
 
     def control_mascota(mascota, paseador):
@@ -29,5 +30,13 @@ class Control():
        else:
            return True
 
-
+    
+    def control_cliente(nuevo_cliente, self.lista_cliente):
+        for cliente in lista_cliente:
+            if (nuevo_cliente.get_DNI() == cliente.get_DNI()):
+                return True
+        else:
+            return False
+            
+        
 
