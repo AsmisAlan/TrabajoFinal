@@ -9,10 +9,12 @@ from Persona import Persona
 
 class Paseador(Persona):
 
-    def __init__(self,nombre , apellido ,DNI , telefono , direc):
+    def __init__(self,nombre , apellido ,DNI , telefono , direc , lista = []):
         self.__init__(self,nombre, apellido ,DNI, telefono , direc)
-        self.__lista__paseos = []
+        self.__listaMascotas = lista
 
-    def get_lista_paseo(self):
-        return self.__lista_paseos
+    def cargar_mascota(self,mascota):
+        return self.__listaMascotas.append(mascota)
+        
+
 

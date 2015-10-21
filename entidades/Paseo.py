@@ -7,15 +7,16 @@ Created on Fri Oct  9 16:03:27 2015
 
 class Paseo():
 
-    def __init__(self,tiempo , tiempoTentativo , DNI):
+    def __init__(self,tiempo , tiempoTentativo ,ID, paseador):
         self.__tiempo = tiempo
         self.__tiempoTentativo = tiempoTentativo
         self.listaMascota = []
-        self.__ID = DNI
+        self.__ID = ID
+        self.__paseador = paseador
 
     def cargar_mascota(self,mascota):
         self.__listaMascotas.append(mascota);
 
 
     def get_paseador(self):
-        return self.__ID
+        return self.__paseador

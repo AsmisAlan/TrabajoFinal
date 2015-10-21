@@ -11,11 +11,13 @@ Created on Fri Oct  9 16:04:49 2015
 
 class Mascota(object):
     
-     def __init__(self,nombre , raza , peso , DNI):
+     def __init__(self,nombre , raza , peso , ID , dueño , paseador):
          self.__nombre = nombre
          self.__raza = raza
          self.__peso = peso
-         self.__ID = DNI
+         self.__ID = ID #este id se genra automaticamente
+         self.__dueño = dueño # codigo por el cual se va a vincular con su dueño
+         self.__paseador = paseador #codigo por el cual se va a vincular con su paseador
     
      def get_nombre(self):
          self.__nombre
@@ -23,13 +25,18 @@ class Mascota(object):
      def get_raza(self):
          self.__raza
          
-     def get_id(self):
+     def get_ID(self):
          self.__ID
          
      def get_peso(self):
          self.__peso
          
+     def get_dueño(self):
+          self.__dueño
          
+     def get_paseador(self):
+          self.__paseador
+        
      def set_nombre(self,nombre):
          self.__nombre = nombre
         
@@ -41,3 +48,9 @@ class Mascota(object):
          
      def set_ID(self , ID):
          self.__ID = ID
+        
+     def set_dueño(self,dueño):
+          self.__dueño = dueño
+         
+     def set_paseador(self,paseador):
+          self.__paseador = paseador

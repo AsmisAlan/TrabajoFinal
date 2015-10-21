@@ -4,7 +4,7 @@ Created on Sat Oct 17 20:30:41 2015
 
 @author: Franco
 """
-
+from entidades import Mascota
 class Control():
     lista_cliente = []
     
