@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>titulo</class>
- <widget class="QWidget" name="titulo">
+ <class>Gestion</class>
+ <widget class="QWidget" name="Gestion">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,13 +16,13 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="Titulo">
+  <widget class="QLabel" name="titulo_submenu">
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>20</y>
+     <y>10</y>
      <width>241</width>
-     <height>16</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -29,10 +32,13 @@
     </font>
    </property>
    <property name="text">
-    <string>GESTION DE PASEADOR</string>
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -167,7 +173,47 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>returns-icon.png</normaloff>returns-icon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>35</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Gestion</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>69</x>
+     <y>2</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -7,7 +7,7 @@ Created on Fri Sep 25 15:14:34 2015
 """
 class Persona(object):
     
-     def __init__(self,nombre , apellido ,DNI , telefono , direc):
+     def __init__(self,nombre = None, apellido = None ,DNI = None , telefono  = None, direc = None):
          self.__nombre = nombre
          self.__apellido = apellido
          self.__DNI = DNI
@@ -15,19 +15,19 @@ class Persona(object):
          self.__direc = direc
     
      def get_nombre(self):
-         self.__nombre
+         return self.__nombre
         
      def get_apellido(self):
-         self.__apellido
+         return self.__apellido
          
      def get_DNI(self):
-         self.__DNI
+         return self.__DNI
          
      def get_telefono(self):
-         self.__telefono
+         return self.__telefono
          
      def get_direc(self):
-         self.__direc
+         return self.__direc
          
      def set_nombre(self,nombre):
          self.__nombre = nombre

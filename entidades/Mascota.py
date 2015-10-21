@@ -11,7 +11,7 @@ Created on Fri Oct  9 16:04:49 2015
 
 class Mascota(object):
     
-     def __init__(self,nombre , raza , peso , ID , dueño , paseador):
+     def __init__(self,nombre = None , raza = None, peso= None , ID = None, dueño = None, paseador= None):
          self.__nombre = nombre
          self.__raza = raza
          self.__peso = peso
@@ -20,22 +20,22 @@ class Mascota(object):
          self.__paseador = paseador #codigo por el cual se va a vincular con su paseador
     
      def get_nombre(self):
-         self.__nombre
+         return self.__nombre
         
      def get_raza(self):
-         self.__raza
+         return self.__raza
          
      def get_ID(self):
-         self.__ID
+         return self.__ID
          
      def get_peso(self):
-         self.__peso
+         return self.__peso
          
      def get_dueño(self):
-          self.__dueño
+         return self.__dueño
          
      def get_paseador(self):
-          self.__paseador
+         return self.__paseador
         
      def set_nombre(self,nombre):
          self.__nombre = nombre

@@ -9,7 +9,7 @@ from Persona import Persona
 
 class Paseador(Persona):
 
-    def __init__(self,nombre , apellido ,DNI , telefono , direc , lista = []):
+    def __init__(self,nombre  = None , apellido  = None ,DNI  = None, telefono  = None, direc  = None, lista = []):
         self.__init__(self,nombre, apellido ,DNI, telefono , direc)
         self.__listaMascotas = lista
 
