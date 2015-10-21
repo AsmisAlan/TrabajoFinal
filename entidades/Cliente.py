@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import Persona 
+from Persona import Persona
 
 class Cliente(Persona):
     

@@ -15,6 +15,15 @@ class Paseador(Persona):
 
     def cargar_mascota(self,mascota):
         return self.__listaMascotas.append(mascota)
+    
+    def get_lista_mascotas(self):
+        return self.__listaMascotas
+        
+    def get_mascota(self , ID):
+        for mascota in self.__listaMascotas : 
+            if( ID == mascota.getID()):
+                return mascota
+        return None
         
 
 
