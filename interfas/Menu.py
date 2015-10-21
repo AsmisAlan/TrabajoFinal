@@ -8,7 +8,8 @@ Created on Mon Oct 19 23:00:37 2015
 import sys
 from PyQt4 import QtGui, uic 
 from Menu_gestion import Menu_gestion
-
+from Submenu_alta_baja_mascota import Submenu_alta_baja_mascota
+from Submenu_alta_baja_paseo import Submenu_alta_baja_paseo
 
 Menu = uic.loadUiType("Menu.ui")[0]
 class Menu(QtGui.QMainWindow,Menu):
@@ -21,20 +22,22 @@ class Menu(QtGui.QMainWindow,Menu):
          self.boton_paseador.clicked.connect(self.gestionPaseador)
          self.boton_nuevo_paseo.clicked.connect(self.gestionPaseo)
          self.boton_mapa.clicked.connect(self.verRecorrido)
-         self.menu_paseador = Menu_gestion('PASEADOR')
-         self.menu_cliente = Menu_gestion('CLIENTE')
     
     def gestionCliente(self):
+        self.menu_cliente = Menu_gestion('CLIENTE')
         self.menu_cliente.setVisible(True)
         
     def gestionMascota(self):
-        print('estoy en la gestion de mascota')
+        self.menu_mascota = Submenu_alta_baja_mascota()
+        self.menu_mascota.setVisible(True)
     
     def gestionPaseador(self):
+        self.menu_paseador = Menu_gestion('PASEADOR')
         self.menu_paseador.setVisible(True)
     
     def gestionPaseo(self):
-        print('estoy en la gestion de paseo')
+        self.menu_nuevo_paseo = Submenu_alta_baja_paseo()
+        self.menu_nuevo_paseo.setVisible(True)
     
     def verRecorrido(self):
         print('estoy en la vista de mapas de recorridos')

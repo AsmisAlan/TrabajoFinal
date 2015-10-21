@@ -8,9 +8,9 @@ import datetime
 
 class Paseo():
 
-    def __init__(self,hora_salida = None, tiempoTentativo= None ,ID= None, paseador = None):
+    def __init__(self,hora_salida = None, tiempo_Tentativo= None ,ID= None, paseador = None):
         self.__hora_salida = hora_salida
-        self.__tiempo_tentativo = tiempoTentativo
+        self.__tiempo_tentativo = tiempo_Tentativo
         self.__ID = ID
         self.__paseador = paseador
         

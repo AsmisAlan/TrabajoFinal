@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>346</width>
-    <height>476</height>
+    <height>461</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>311</width>
+     <width>321</width>
      <height>51</height>
     </rect>
    </property>
@@ -31,6 +31,9 @@
      <pointsize>16</pointsize>
     </font>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -38,13 +41,13 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
+     <y>70</y>
      <width>321</width>
-     <height>391</height>
+     <height>401</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -59,7 +62,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Nombre</string>
+         <string>Nombre  </string>
         </property>
         <property name="textFormat">
          <enum>Qt::AutoText</enum>
@@ -89,12 +92,19 @@
          </font>
         </property>
         <property name="text">
-         <string>Apellido</string>
+         <string>Apellido  </string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="linea_apellido"/>
+       <widget class="QLineEdit" name="linea_apellido">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -109,12 +119,19 @@
          </font>
         </property>
         <property name="text">
-         <string>DNI</string>
+         <string>DNI          </string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="linea_dni"/>
+       <widget class="QLineEdit" name="linea_dni">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -129,12 +146,19 @@
          </font>
         </property>
         <property name="text">
-         <string>Telefono</string>
+         <string>Telefono  </string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="linea_telefono"/>
+       <widget class="QLineEdit" name="linea_telefono">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -154,7 +178,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="linea_direccion"/>
+       <widget class="QLineEdit" name="linea_direccion">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -165,7 +196,7 @@
         <property name="font">
          <font>
           <family>Arial</family>
-          <pointsize>16</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -178,7 +209,7 @@
         <property name="font">
          <font>
           <family>Arial</family>
-          <pointsize>16</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -190,19 +221,7 @@
     </item>
    </layout>
   </widget>
-  <zorder>linea_nombre</zorder>
-  <zorder>linea_apellido</zorder>
-  <zorder>label</zorder>
-  <zorder>text</zorder>
-  <zorder>label_3</zorder>
-  <zorder>dni</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label_6</zorder>
-  <zorder>linea_dni</zorder>
-  <zorder>linea_telefono</zorder>
-  <zorder>linea_direccion</zorder>
-  <zorder>boton_guardar</zorder>
-  <zorder></zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>text</zorder>
  </widget>
  <resources/>
