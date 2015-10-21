@@ -53,12 +53,12 @@ class Submenu_alta_baja_mascota(QtGui.QWidget, dialogo_alta_baja_mascota):
         peso = self.Peso.intValue()
         
         if(error !=''):
-            self.error(error)
+            self.mostra_error(error)
         
-    def error(self,error):
+    def mostra_error(self,detalles):
         self.error = Error_alta_baja.Error_alta_baja()
         self.error.setVisible(True)
-        self.error.mensaje_error.setText('Error en el campo: ' + error)
+        self.error.mensaje_error.setText('Error en el campo: ' + detalles)
     
         
             

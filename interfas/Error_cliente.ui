@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>508</width>
-    <height>281</height>
+    <height>251</height>
    </rect>
   </property>
   <property name="font">
@@ -28,11 +28,16 @@
   <widget class="QPushButton" name="dialogo_error">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>220</y>
-     <width>75</width>
+     <x>190</x>
+     <y>200</y>
+     <width>131</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="contextMenuPolicy">
     <enum>Qt::DefaultContextMenu</enum>
@@ -47,7 +52,7 @@
      <x>90</x>
      <y>10</y>
      <width>331</width>
-     <height>61</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -67,7 +72,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>130</y>
+     <y>90</y>
      <width>501</width>
      <height>61</height>
     </rect>
@@ -94,12 +99,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>233</x>
-     <y>238</y>
+     <x>292</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>441</x>
-     <y>180</y>
+     <x>392</x>
+     <y>-20</y>
     </hint>
    </hints>
   </connection>
