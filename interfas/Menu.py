@@ -28,7 +28,7 @@ class Menu(QtGui.QMainWindow,Menu):
         self.menu_cliente.setVisible(True)
         
     def gestionMascota(self):
-        self.menu_mascota = Submenu_alta_baja_mascota()
+        self.menu_mascota = Menu_gestion('MASCOTA')
         self.menu_mascota.setVisible(True)
     
     def gestionPaseador(self):

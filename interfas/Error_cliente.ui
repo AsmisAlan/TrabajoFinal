@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Error</class>
+ <widget class="QDialog" name="Error">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>439</width>
-    <height>320</height>
+    <width>508</width>
+    <height>281</height>
    </rect>
   </property>
   <property name="font">
@@ -19,11 +22,14 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <widget class="QPushButton" name="dialogo_error">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>160</y>
+     <x>210</x>
+     <y>220</y>
      <width>75</width>
      <height>41</height>
     </rect>
@@ -38,14 +44,44 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>70</y>
-     <width>471</width>
-     <height>101</height>
+     <x>90</x>
+     <y>10</y>
+     <width>331</width>
+     <height>61</height>
     </rect>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
    <property name="text">
-    <string>El cliente ingresado ya existe</string>
+    <string>DATOS NO VALIDOS</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mensaje_error">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>130</y>
+     <width>501</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
@@ -54,12 +90,12 @@
   <connection>
    <sender>dialogo_error</sender>
    <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>Error</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>233</x>
-     <y>178</y>
+     <y>238</y>
     </hint>
     <hint type="destinationlabel">
      <x>441</x>
