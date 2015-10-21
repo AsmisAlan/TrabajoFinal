@@ -19,11 +19,11 @@ class Menu_gestion(QtGui.QWidget,Menu):
          self.boton_nuevo.clicked.connect(self.nuevo)
          self.boton_detalles.clicked.connect(self.detalles)
          self.boton_mapa.clicked.connect(self.direccion)
-         self.nuevo = Submenu_alta_baja()
          self.texto_menu = string
          self.titulo_submenu.setText('GESTION ' + string )
     
     def nuevo(self):
+        self.nuevo = Submenu_alta_baja()
         self.nuevo.setVisible(True)
         self.nuevo.text.setText('NUEVO ' + self.texto_menu )
         
