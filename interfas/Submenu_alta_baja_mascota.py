@@ -6,10 +6,10 @@ Created on Wed Oct 21 04:35:48 2015
 """
 import random
 from PyQt4 import QtGui, uic, QtCore
-import Error_alta_baja
+import interfas.Error_alta_baja
 
 
-dialogo_alta_baja_mascota= uic.loadUiType('alta_baja_mascota.ui')[0]
+dialogo_alta_baja_mascota= uic.loadUiType('interfas/alta_baja_mascota.ui')[0]
 
 class Submenu_alta_baja_mascota(QtGui.QWidget, dialogo_alta_baja_mascota):
     

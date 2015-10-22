@@ -7,7 +7,7 @@ Created on Wed Oct 21 18:02:42 2015
 
 from PyQt4 import QtGui, uic, QtCore
 
-error_dialogo_alta_baja = uic.loadUiType('Error_cliente.ui')[0]
+error_dialogo_alta_baja = uic.loadUiType('interfas/Error_cliente.ui')[0]
 
 class Error_alta_baja(QtGui.QDialog, error_dialogo_alta_baja):
     

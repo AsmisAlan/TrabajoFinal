@@ -4,14 +4,15 @@ Created on Fri Sep 25 15:14:34 2015
 
 @author: alan
 """
-class Persona(object):
+class Persona():
     
-     def __init__(self,nombre = None, apellido = None ,DNI = None , telefono  = None, direc = None):
+     def __init__(self, roll,nombre = None, apellido = None ,DNI = None , telefono  = None, direc = None ):
          self.__nombre = nombre
          self.__apellido = apellido
          self.__DNI = DNI
          self.__telefono = telefono
          self.__direc = direc
+         self.__roll = roll
     
      def get_nombre(self):
          return self.__nombre
@@ -43,3 +44,5 @@ class Persona(object):
      def set_direc(self , direc):
          self.__direc = direc
          
+     def get_Roll(self):
+         return self.__roll

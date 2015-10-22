@@ -7,10 +7,10 @@ Created on Tue Oct 20 22:55:50 2015
 
 
 from PyQt4 import QtGui, uic ,QtCore
-from dialogo_alta_baja import Submenu_alta_baja
-from Submenu_alta_baja_mascota import Submenu_alta_baja_mascota
+from interfas.dialogo_alta_baja import Submenu_alta_baja
+from interfas.Submenu_alta_baja_mascota import Submenu_alta_baja_mascota
 
-Menu = uic.loadUiType("Menu_gestion.ui")[0]
+Menu = uic.loadUiType("interfas/Menu_gestion.ui")[0]
 class Menu_gestion(QtGui.QWidget,Menu):
 
     def __init__(self,string, parent=None ):
@@ -22,8 +22,10 @@ class Menu_gestion(QtGui.QWidget,Menu):
          self.titulo_submenu.setText('GESTION ' + string )
          if (string != 'MASCOTA'):   
              self.boton_nuevo.clicked.connect(self.nuevo)
+             self.tabla_mascota.close()
          else:
              self.boton_nuevo.clicked.connect(self.nueva_mascota)
+             self.tabla_persona.close()
              
     
     def nuevo(self):

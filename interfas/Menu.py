@@ -7,11 +7,10 @@ Created on Mon Oct 19 23:00:37 2015
 
 import sys
 from PyQt4 import QtGui, uic 
-from Menu_gestion import Menu_gestion
-from Submenu_alta_baja_mascota import Submenu_alta_baja_mascota
-from Submenu_alta_baja_paseo import Submenu_alta_baja_paseo
+from interfas.Menu_gestion import Menu_gestion
+from interfas.Submenu_alta_baja_paseo import Submenu_alta_baja_paseo
 
-Menu = uic.loadUiType("Menu.ui")[0]
+Menu = uic.loadUiType("interfas/Menu.ui")[0]
 class Menu(QtGui.QMainWindow,Menu):
     
     def __init__(self, parent=None):
