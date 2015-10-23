@@ -20,7 +20,11 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>ERROR</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Ico_Mascota.png</normaloff>../Ico_Mascota.png</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -39,6 +43,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="contextMenuPolicy">
     <enum>Qt::DefaultContextMenu</enum>
    </property>
@@ -46,7 +53,7 @@
     <string>OK</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="titulo">
    <property name="geometry">
     <rect>
      <x>90</x>

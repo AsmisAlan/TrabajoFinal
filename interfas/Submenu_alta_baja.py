@@ -10,19 +10,26 @@ Created on Tue Oct 20 16:45:25 2015
 from PyQt4 import QtGui, uic
 from interfas.Error_alta_baja import Error_alta_baja
 from entidades.Persona import Persona
-from control.Control_cliente import Control_cliente
+
 
 
 dialogo_alta_baja = uic.loadUiType('interfas/alta_baja.ui')[0]
 
 class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
     
-    def __init__ (self, parent = None):
+    def __init__ (self,persona = None, parent = None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
-        self.boton_guardar.clicked.connect(self.guardar)
+        self.persona_aux  = persona
+        self.boton_guardar.clicked.connect(self.guardar(lista))
         
-    def guardar(self,control):
+    def guardar(self):
+        if(self.persona_aux == None):
+            self.linea_nombre.setText(self.persona_aux.get_nombre())
+            self.linea_apellido.setText(self.persona_aux.get_apellido())
+            self.linea_dni.setText(self.persona_aux.get_DNI())
+            self.linea_telefono.setText(self.persona_aux.get_telefono())
+            self.linea_direccion.setText(self.persona_aux.get_apellido())
         error = ''
         dni  = 0
         telefono = 0
@@ -46,9 +53,8 @@ class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
             
         if (error != ''):
             self.mostra_error(error)
-            
-        nuevo = Persona(nombre,apellido,dni,telefono,direccion,'Cliente')        
-        if not(control.control_agregar(nuevo)):
+        else:
+            return Persona(nombre,apellido,dni,telefono,direccion,'Cliente')        
             self.close()
         
         

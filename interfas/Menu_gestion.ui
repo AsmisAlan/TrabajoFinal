@@ -14,7 +14,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>GESTION</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Ico_Mascota.png</normaloff>../Ico_Mascota.png</iconset>
   </property>
   <widget class="QLabel" name="titulo_submenu">
    <property name="geometry">
@@ -31,6 +35,12 @@
      <pointsize>14</pointsize>
     </font>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -46,6 +56,9 @@
      <width>51</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string/>
@@ -70,6 +83,12 @@
      <height>374</height>
     </rect>
    </property>
+   <property name="sortingEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="rowCount">
+    <number>0</number>
+   </property>
    <attribute name="horizontalHeaderCascadingSectionResizes">
     <bool>false</bool>
    </attribute>
@@ -80,9 +99,15 @@
     <number>100</number>
    </attribute>
    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderCascadingSectionResizes">
     <bool>true</bool>
    </attribute>
    <column>
@@ -131,7 +156,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Mascotas</string>
+     <string>Direccion</string>
     </property>
     <property name="font">
      <font>
@@ -163,6 +188,12 @@
     <bool>true</bool>
    </attribute>
    <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderCascadingSectionResizes">
     <bool>true</bool>
    </attribute>
    <column>
@@ -236,7 +267,7 @@
     </property>
    </column>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>11</x>
@@ -256,6 +287,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>Nuevo </string>
       </property>
@@ -271,6 +305,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>Detalles</string>
       </property>
@@ -285,6 +322,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
        <string>Mapa</string>

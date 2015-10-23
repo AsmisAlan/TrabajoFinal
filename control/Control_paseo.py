@@ -1,19 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 21 23:02:27 2015
+Created on Thu Oct 22 15:01:45 2015
 
-@author: Franco
+@author: alan
 """
+
 import random
 
 class Control():
     
-    def __init__(self,roll):
+    def __init__(self):
         self.lista = []
-        self.roll = roll
-        
-    def get_roll(self):
-        return self.roll
     
     def control_agregar(self,nuevo):
         control = True

@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Ico_Mascota.png</normaloff>Ico_Mascota.png</iconset>
+  </property>
   <widget class="QLabel" name="text">
    <property name="geometry">
     <rect>
@@ -199,6 +203,9 @@
           <pointsize>12</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Guardar</string>
         </property>
@@ -211,6 +218,9 @@
           <family>Arial</family>
           <pointsize>12</pointsize>
          </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
          <string>Cancelar</string>

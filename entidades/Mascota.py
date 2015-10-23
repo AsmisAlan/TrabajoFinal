@@ -9,7 +9,7 @@ Created on Fri Oct  9 16:04:49 2015
 
 """
 
-class Mascota(object):
+class Mascota():
     
      def __init__(self,nombre = None , raza = None, peso= None , ID = None, dueño = None, paseador= None):
          self.__nombre = nombre
