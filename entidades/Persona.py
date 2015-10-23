@@ -28,6 +28,9 @@ class Persona():
      def get_direc(self):
          return self.__direc
          
+     def get_apellido_nombre(self):
+         return self.__apellido +' '+ self.__nombre
+         
      def set_nombre(self,nombre):
          self.__nombre = nombre
         

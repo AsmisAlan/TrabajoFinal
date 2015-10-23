@@ -138,12 +138,19 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="llegada">
+         <property name="text">
+          <string>MARCAR LLEGADA</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
       <widget class="QTableWidget" name="tabla_paseos">
        <attribute name="horizontalHeaderCascadingSectionResizes">
-        <bool>false</bool>
+        <bool>true</bool>
        </attribute>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>150</number>
@@ -163,6 +170,7 @@
         </property>
         <property name="font">
          <font>
+          <family>Arial</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -176,6 +184,7 @@
         </property>
         <property name="font">
          <font>
+          <family>Arial</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -189,6 +198,7 @@
         </property>
         <property name="font">
          <font>
+          <family>Arial</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -198,10 +208,25 @@
        </column>
        <column>
         <property name="text">
-         <string>hora estimada de llegada</string>
+         <string>Tiempo Estimado</string>
         </property>
         <property name="font">
          <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="textAlignment">
+         <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Hora Llegada</string>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
           <pointsize>12</pointsize>
          </font>
         </property>
