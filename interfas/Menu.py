@@ -132,6 +132,7 @@ class Menu(QtGui.QMainWindow,Menu):
          self.boton_nuevo_paseo.clicked.connect(self.gestionPaseo)
          self.llegada.clicked.connect(self.marcarLlegada)
          self.boton_mapa.clicked.connect(self.verRecorrido)
+         self.tabla_paseos.clicked.connect(self.activar)
          
     
     def gestionCliente(self):
@@ -153,9 +154,18 @@ class Menu(QtGui.QMainWindow,Menu):
     def marcarLlegada(self):
         self.lista_paseos.obtener(self.tabla_paseos.currentRow()).set_hora_llegada(time.strftime('%H : %M : %S'))
         CargarTablaPaseo(self.tabla_paseos , self.lista_paseos)
+        self.llegada.setEnabled(False)
     
     def verRecorrido(self):
         print('estoy en la vista de mapas de recorridos')
+        
+    def activar(self):
+        print(self.lista_paseos.obtener(self.tabla_paseos.currentRow()).get_hora_llegada().find('-'))
+        if(self.lista_paseos.obtener(self.tabla_paseos.currentRow()).get_hora_llegada().find('-') > -1):
+            self.llegada.setEnabled(True)
+        else:
+            self.llegada.setEnabled(False)
+            
         
         
 

@@ -140,6 +140,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="llegada">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>MARCAR LLEGADA</string>
          </property>
@@ -247,5 +250,22 @@
   <tabstop>boton_mapa</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>tabla_paseos</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>llegada</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>538</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>605</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
