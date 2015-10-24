@@ -148,13 +148,17 @@ class Menu(QtGui.QMainWindow,Menu):
         self.menu_paseador.setVisible(True)
     
     def gestionPaseo(self):
-        self.menu_nuevo_paseo = Submenu_alta_baja_paseo(self.lista_paseos,self.lista_paseadores,self.tabla_paseos)
-        self.menu_nuevo_paseo.setVisible(True)
+        if(self.lista_paseadores.tamanio() > 0):
+            self.menu_nuevo_paseo = Submenu_alta_baja_paseo(self.lista_paseos,self.lista_paseadores,self.tabla_paseos)
+            self.menu_nuevo_paseo.setVisible(True)
+        else:
+            self.mostra_error('No hay Paseadores.')
         
     def marcarLlegada(self):
         self.lista_paseos.obtener(self.tabla_paseos.currentRow()).set_hora_llegada(time.strftime('%H : %M : %S'))
         CargarTablaPaseo(self.tabla_paseos , self.lista_paseos)
         self.llegada.setEnabled(False)
+        self.boton_mapa.setEnabled(True)
     
     def verRecorrido(self):
         print('estoy en la vista de mapas de recorridos')
@@ -165,6 +169,12 @@ class Menu(QtGui.QMainWindow,Menu):
             self.llegada.setEnabled(True)
         else:
             self.llegada.setEnabled(False)
+        self.boton_mapa.setEnabled(True)
+        
+    def mostra_error(self,detalles):
+        self.error = Error_alta_baja()
+        self.error.setVisible(True)
+        self.error.mensaje_error.setText( detalles)
             
         
         
