@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>DETALLES</class>
  <widget class="QWidget" name="DETALLES">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>801</width>
-    <height>482</height>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -238,7 +241,7 @@
     <string>DIRECCION: </string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="boton_mapa">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -272,7 +275,7 @@
     <rect>
      <x>140</x>
      <y>200</y>
-     <width>441</width>
+     <width>521</width>
      <height>41</height>
     </rect>
    </property>
@@ -339,7 +342,7 @@
   <zorder>label_3</zorder>
   <zorder>label_4</zorder>
   <zorder>label_5</zorder>
-  <zorder>pushButton</zorder>
+  <zorder>boton_mapa</zorder>
   <zorder>direccion</zorder>
   <zorder>dni</zorder>
   <zorder>nombre</zorder>

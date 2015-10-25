@@ -45,3 +45,27 @@ class Control():
     def obtener_Random(self):
            if( self.tamanio() > 0):
                return random.choice(self.lista)
+               
+    def cantidad_mascotas(self,lista_mascota):
+        paseadores_aptos = []
+        control = 0
+        for paseador in self.lista : 
+            paseadores_aptos.append(0)
+            for mascota in lista_mascota.lista:
+                if(mascota.get_paseador() == paseador.get_DNI()):
+                    paseadores_aptos[control] +=1
+            control +=1
+        return paseadores_aptos
+        
+    def direcciones(self,lista_mascota,lista_cliente):
+        direcciones = ''
+        control = 0
+        for cliente in lista_cliente : 
+            paseadores_aptos.append(0)
+            for mascota in lista_mascota.lista:
+                if(mascota.get_paseador() == paseador.get_DNI()):
+                    paseadores_aptos[control] +=1
+            control +=1
+        return paseadores_aptos
+                
+                    

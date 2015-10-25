@@ -14,6 +14,8 @@ from control.Control_mascota import Control_mascota
 from control.Control_persona import Control
 from control.Control_paseo import Control_paseo
 from interfas.Error_alta_baja import Error_alta_baja
+from interfas.Detalles_persona import Detalles_persona
+from interfas.Mapa import Mapa
 import time
 
 
@@ -149,7 +151,7 @@ class Menu(QtGui.QMainWindow,Menu):
     
     def gestionPaseo(self):
         if(self.lista_paseadores.tamanio() > 0):
-            self.menu_nuevo_paseo = Submenu_alta_baja_paseo(self.lista_paseos,self.lista_paseadores,self.tabla_paseos)
+            self.menu_nuevo_paseo = Submenu_alta_baja_paseo(self.lista_paseos,self.lista_paseadores,self.tabla_paseos,self.lista_paseadores.cantidad_mascotas(self.lista_mascotas))
             self.menu_nuevo_paseo.setVisible(True)
         else:
             self.mostra_error('No hay Paseadores.')
@@ -164,7 +166,6 @@ class Menu(QtGui.QMainWindow,Menu):
         print('estoy en la vista de mapas de recorridos')
         
     def activar(self):
-        print(self.lista_paseos.obtener(self.tabla_paseos.currentRow()).get_hora_llegada().find('-'))
         if(self.lista_paseos.obtener(self.tabla_paseos.currentRow()).get_hora_llegada().find('-') > -1):
             self.llegada.setEnabled(True)
         else:
@@ -210,10 +211,19 @@ class Menu_gestion(QtGui.QWidget,Menu_ge):
         self.nuevo.setVisible(True)
     
     def detalles(self):
-        print('detalles')
+        pos = self.tabla_persona.item(self.tabla_persona.currentRow(),0)
+        if (pos != None ):
+            doc = int (QtGui.QTableWidgetItem.text(pos) )
+            self.detallar = Detalles_persona(self.lista.obtener_por_dni(doc),self.lista.get_roll())
+            self.detallar.setVisible(True)
     
     def direccion(self):
-        print('mapa')
+        pos = self.tabla_persona.item(self.tabla_persona.currentRow(),4)
+        if (pos != None ):
+            direccion = str (QtGui.QTableWidgetItem.text(pos) )
+            self.mapa_persona = Mapa(direccion)
+            self.mapa_persona.setVisible(True)
+            
         
 #==============================================================================
 #                        MENU DE GESTION (mascotas )
@@ -418,25 +428,34 @@ dialogo_alta_baja_paseo= uic.loadUiType('interfas/alta_baja_paseo.ui')[0]
 
 class Submenu_alta_baja_paseo(QtGui.QWidget, dialogo_alta_baja_paseo):
     
-    def __init__ (self,lista_paseos ,lista_paseadores , tabla ,parent = None):
+    def __init__ (self,lista_paseos ,lista_paseadores , tabla , numero_mascotas ,parent = None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
         self.boton_guardar.clicked.connect(self.guardar)
+        self.box_paseador.currentIndexChanged.connect(self.numeroMascotas)
         self.tabla = tabla
         self.lista_paseos = lista_paseos
         self.lista_paseadores = lista_paseadores
+        self.lista_numero_mascotas = numero_mascotas
         self.paseo.setText(str(lista_paseos.tamanio() ))
         self.box_paseador.addItems(lista_paseadores.ListaNombres())
-        
+    
+    def numeroMascotas(self):
+        pos = self.box_paseador.currentIndex()
+        self.mascota.setText(str(self.lista_numero_mascotas[pos]))
         
     def guardar(self):
         error = ''
         ID = self.lista_paseos.tamanio()
-        paseador = self.lista_paseadores.obtener(self.box_paseador.currentIndex())
+        pos = self.box_paseador.currentIndex()
+        paseador = self.lista_paseadores.obtener(pos)
+        numeroMascotas = self.lista_numero_mascotas[pos]
+        if (numeroMascotas == 0):
+            error = 'El paseador no posee mascotas a cargo'
         try:
             tiempo_estimado = int(self.tiempo_estimado.text())
         except(ValueError):
-            error = 'EL TIEMPO ESTIMADO SOLO PUEDE SER UN VALOR NUMERICO.'
+            error += 'EL TIEMPO ESTIMADO DEBE SER UN VALOR NUMERICO.'
         tiempo_salida = time.strftime('%H : %M : %S')
         tiempo_llegada = '----------'
         if(error == ''):
@@ -449,7 +468,7 @@ class Submenu_alta_baja_paseo(QtGui.QWidget, dialogo_alta_baja_paseo):
     def mostra_error(self,detalles):
         self.error = Error_alta_baja()
         self.error.setVisible(True)
-        self.error.mensaje_error.setText('Error en el campo: ' + detalles)
+        self.error.mensaje_error.setText(detalles)
         
         
         

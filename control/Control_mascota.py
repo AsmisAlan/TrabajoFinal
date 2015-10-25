@@ -22,5 +22,8 @@ class Control_mascota():
     
     def tamanio(self):
         return len(self.lista) 
+    
+    
+                    
         
 
