@@ -28,15 +28,15 @@ class Mapa(QtGui.QWidget,mapax):
         self.satelital.clicked.connect(self.changeToSatelital)
         
     def set_direccion(self , direccion ):
-        url = "http://maps.googleapis.com/maps/api/staticmap?"
-        center = "center= -32.4"+str(self.latitud)+",-58."+str(self.longitud)
+        url = "https://maps.googleapis.com/maps/api/staticmap?"
+        center = "center=-32.4"+str(self.latitud)+",-58."+str(self.longitud)
         zoom = "&zoom="+str(self.zoom)
         size = "&size=640x640"
         markers = "&markers=" + direccion 
         path = "&path=" + direccion
         imgformat = "&format=png"
         maptype="&maptype="+self.style    
-        sensor = "&sensor=true"
+        sensor = "&sensor=false"
         url = url + center + zoom + size + markers+ path + imgformat + maptype + sensor
         return url
         

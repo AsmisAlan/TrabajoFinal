@@ -29,7 +29,13 @@ class Control_mascota():
             if( mascota.get_paseador() == paseador.get_DNI() ):    
                 lista_aux.append(mascota)
         return lista_aux
-                
+    
+    def mascotas_cliente(self,cliente):
+        lista_aux = []
+        for mascota in self.lista : 
+            if( mascota.get_dueño() == cliente.get_DNI() ):    
+                lista_aux.append(mascota)
+        return lista_aux
     
                     
         

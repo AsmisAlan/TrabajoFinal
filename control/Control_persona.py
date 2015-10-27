@@ -28,6 +28,13 @@ class Control():
     def obtener(self,pos ):
         return self.lista[pos]
         
+    def obtener_pos_dni(self,dni):
+        pos = 0 
+        for Persona in self.lista:
+            if (dni == Persona.get_DNI()):
+                return pos
+            pos+=1
+        
     def tamanio(self):
         return len(self.lista) 
         
@@ -41,6 +48,7 @@ class Control():
         for Persona in self.lista:
             if (DNI == Persona.get_DNI()):
                 return Persona
+        return None
                 
     def obtener_Random(self):
            if( self.tamanio() > 0):
@@ -66,7 +74,7 @@ class Control():
                 lista_aux.index(cliente)
             except:
                 lista_aux.append(cliente)
-                direcciones += cliente.get_direc() +' Concepcion del Uruguay |'
+                direcciones += cliente.get_direc() +' |'
         return direcciones
                 
                     

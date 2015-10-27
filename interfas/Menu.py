@@ -15,103 +15,13 @@ from control.Control_persona import Control
 from control.Control_paseo import Control_paseo
 from interfas.Error_alta_baja import Error_alta_baja
 from interfas.Detalles_persona import Detalles_persona
+from interfas.ManejoTablas import *
 from interfas.Mapa import Mapa
 import time
 
 
 
 
-
-def add_in_tabla(tabla,lista):
-    aux = lista.tamanio() -1
-    tabla.insertRow(aux)
-    nombre = QtGui.QTableWidgetItem(lista.obtener(aux).get_nombre() )
-    apellido =QtGui.QTableWidgetItem( lista.obtener(aux).get_apellido() )
-    dni = QtGui.QTableWidgetItem( str(lista.obtener(aux).get_DNI()) )
-    tel = QtGui.QTableWidgetItem( str(lista.obtener(aux).get_telefono() ))
-    direc = QtGui.QTableWidgetItem( lista.obtener(aux).get_direc() )
-    tabla.setItem(aux ,0 , dni)
-    tabla.setItem(aux ,1 , nombre )
-    tabla.setItem(aux ,2, apellido)
-    tabla.setItem(aux ,3 ,tel )
-    tabla.setItem(aux ,4,direc )
-
-def add_in_tabla_mascota(tabla,lista):
-    aux = lista.tamanio() -1
-    tabla.insertRow(aux)
-    nombre = QtGui.QTableWidgetItem(lista.obtener(aux).get_nombre() )
-    peso =QtGui.QTableWidgetItem( str(lista.obtener(aux).get_peso()) )
-    raza = QtGui.QTableWidgetItem( lista.obtener(aux).get_raza() )
-    dueño = QtGui.QTableWidgetItem( str(lista.obtener(aux).get_dueño() ))
-    paseador = QtGui.QTableWidgetItem( str(lista.obtener(aux).get_paseador()) )
-    tabla.setItem(aux ,0 , nombre)
-    tabla.setItem(aux ,1 ,raza)
-    tabla.setItem(aux ,2, peso)
-    tabla.setItem(aux ,3 ,dueño )
-    tabla.setItem(aux ,4,paseador)
-    
-def CargarTabla(tabla,lista):
-        fila = 0
-        for aux in lista.lista:
-            tabla.insertRow(fila)
-            nombre = QtGui.QTableWidgetItem( aux.get_nombre() )
-            apellido =QtGui.QTableWidgetItem( aux.get_apellido() )
-            dni = QtGui.QTableWidgetItem( str(aux.get_DNI()) )
-            tel = QtGui.QTableWidgetItem( str(aux.get_telefono() ))
-            direc = QtGui.QTableWidgetItem( aux.get_direc() )
-            tabla.setItem(fila ,0 , dni)
-            tabla.setItem(fila ,1 , nombre )
-            tabla.setItem(fila ,2, apellido)
-            tabla.setItem(fila ,3 ,tel )
-            tabla.setItem(fila ,4,direc )
-            fila+=1
-            
-def CargarTablaMascota(tabla_mascota,lista):
-        fila = 0
-        for aux in lista.lista:
-            tabla_mascota.insertRow(fila)
-            nombre = QtGui.QTableWidgetItem(aux.get_nombre() )
-            peso =QtGui.QTableWidgetItem( str(aux.get_peso()) )
-            raza = QtGui.QTableWidgetItem( aux.get_raza() )
-            dueño = QtGui.QTableWidgetItem(str( aux.get_dueño() ))
-            paseador = QtGui.QTableWidgetItem( str(aux.get_paseador()) )
-            tabla_mascota.setItem(fila ,0 , nombre)
-            tabla_mascota.setItem(fila ,1 ,raza)
-            tabla_mascota.setItem(fila ,2, peso)
-            tabla_mascota.setItem(fila ,3 ,dueño )
-            tabla_mascota.setItem(fila ,4,paseador)
-            fila+=1
-    
-    
-def add_in_tabla_paseo(tabla,lista):
-    aux = lista.tamanio() -1
-    tabla.insertRow(aux)
-    paseador = QtGui.QTableWidgetItem(lista.obtener(aux).get_paseador().get_apellido_nombre() )
-    horaS =QtGui.QTableWidgetItem( lista.obtener(aux).get_hora_salida() )
-    ID = QtGui.QTableWidgetItem( str(lista.obtener(aux).get_id() ) )
-    tiempo = QtGui.QTableWidgetItem( str(lista.obtener(aux).get_tiempo_tentativo() ) + ' hs')
-    horal = QtGui.QTableWidgetItem( lista.obtener(aux).get_hora_llegada()) 
-    tabla.setItem(aux ,0 ,ID)
-    tabla.setItem(aux ,1 ,paseador )
-    tabla.setItem(aux ,2, horaS)
-    tabla.setItem(aux ,3 ,tiempo  )
-    tabla.setItem(aux ,4,horal )
-    
-def CargarTablaPaseo(tabla,lista):
-        fila = 0
-        for aux in lista.lista:
-            #tabla.insertRow(fila)
-            paseador = QtGui.QTableWidgetItem( aux.get_paseador().get_apellido_nombre() )
-            horaS =QtGui.QTableWidgetItem( aux.get_hora_salida() )
-            ID = QtGui.QTableWidgetItem( str(aux.get_id()) )
-            tiempo = QtGui.QTableWidgetItem( str(aux.get_tiempo_tentativo())+ ' hs')
-            horal = QtGui.QTableWidgetItem( aux.get_hora_llegada() )
-            tabla.setItem(fila ,0 ,ID)
-            tabla.setItem(fila ,1 , paseador )
-            tabla.setItem(fila ,2, horaS)
-            tabla.setItem(fila ,3 ,tiempo )
-            tabla.setItem(fila ,4,horal )
-            fila+=1
 #==============================================================================
 #                             MENU PRINCIPAL
 #==============================================================================
@@ -138,7 +48,7 @@ class Menu(QtGui.QMainWindow,Menu):
          
     
     def gestionCliente(self):
-        self.menu_cliente = Menu_gestion(self.lista_clientes)
+        self.menu_cliente = Menu_gestion(self.lista_clientes,self.lista_mascotas)
         self.menu_cliente.setVisible(True)
         
     def gestionMascota(self):
@@ -146,7 +56,7 @@ class Menu(QtGui.QMainWindow,Menu):
         self.menu_mascota.setVisible(True)
     
     def gestionPaseador(self):
-        self.menu_paseador = Menu_gestion(self.lista_paseadores)
+        self.menu_paseador = Menu_gestion(self.lista_paseadores,self.lista_mascotas)
         self.menu_paseador.setVisible(True)
     
     def gestionPaseo(self):
@@ -195,19 +105,28 @@ Menu_ge = uic.loadUiType("interfas/Menu_gestion.ui")[0]
 
 class Menu_gestion(QtGui.QWidget,Menu_ge):
 
-    def __init__(self,lista, parent=None ):
+    def __init__(self,lista,mascotas, parent=None ):
          QtGui.QWidget.__init__(self, parent)
          self.setupUi(self)
+         
+         self.tabla_mascota.close()
+         self.texto_menu = lista.get_roll() #guardo el roll que poseen los objetos de la lista.
+         self.lista = lista #La variable por referencia Self.lista va a apuntar al mismo objeto que la lista.
+         self.lista_mascotas = mascotas
+         self.titulo_submenu.setText('GESTION ' + self.texto_menu )  
+         CargarTabla(self.tabla_persona ,self.lista)
          
          self.boton_detalles.clicked.connect(self.detalles)
          self.boton_mapa.clicked.connect(self.direccion)
          self.boton_nuevo.clicked.connect(self.nuevo)
-         self.tabla_mascota.close()
-         
-         self.texto_menu = lista.get_roll() #guardo el roll que poseen los objetos de la lista.
-         self.lista = lista #La variable por referencia Self.lista va a apuntar al mismo objeto que la lista.
-         self.titulo_submenu.setText('GESTION ' + self.texto_menu )  
-         CargarTabla(self.tabla_persona ,self.lista)
+         self.tabla_persona.doubleClicked.connect(self.modificar)
+    
+    def modificar(self):
+        pos = self.tabla_persona.item(self.tabla_persona.currentRow(),0) #devuelve el documento de la tabla
+        if (pos != None ):
+            doc = int (QtGui.QTableWidgetItem.text(pos) ) # combierte el documento qtable gidget en entero
+            self.nuevo = Submenu_alta_baja( self.lista,self.tabla_persona,self.lista.obtener_pos_dni(doc) )
+            self.nuevo.setVisible(True)
 
     def nuevo(self):
         #esto pide, la lista , una tabla y la persona si se quiere modificar.
@@ -218,7 +137,7 @@ class Menu_gestion(QtGui.QWidget,Menu_ge):
         pos = self.tabla_persona.item(self.tabla_persona.currentRow(),0)
         if (pos != None ):
             doc = int (QtGui.QTableWidgetItem.text(pos) )
-            self.detallar = Detalles_persona(self.lista.obtener_por_dni(doc),self.lista.get_roll())
+            self.detallar = Detalles_persona(self.lista.obtener_por_dni(doc),self.lista.get_roll(),self.lista_mascotas)
             self.detallar.setVisible(True)
     
     def direccion(self):
@@ -254,7 +173,7 @@ class Menu_gestion_mascota(QtGui.QWidget,Menu_ge):
          #La variable por referencia Self.lista_mascotas va a apuntar al mismo objeto que la lista_mascotas.
          self.lista_mascotas = lista_mascotas
          self.titulo_submenu.setText('GESTION MASCOTAS' )
-         CargarTablaMascota(self.tabla_mascota ,self.lista_mascotas)
+         CargarTablaMascota(self.tabla_mascota ,self.lista_mascotas.lista)
              
     
 
@@ -287,22 +206,25 @@ dialogo_alta_baja = uic.loadUiType('interfas/alta_baja.ui')[0]
 
 class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
     
-    def __init__ (self,lista,tabla,persona = None, parent = None):
+    def __init__ (self,lista,tabla,pos= None, parent = None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
-        self.boton_guardar.clicked.connect(self.guardar)
-        
+        self.pos = pos
         self.lista  = lista
         self.tabla = tabla
-        if(persona != None):
+       
+        if(pos != None):
+            persona = self.lista.lista[self.pos]
             self.linea_nombre.setText(persona.get_nombre())
             self.linea_apellido.setText(persona.get_apellido())
-            self.linea_dni.setText(persona.get_DNI())
-            self.linea_telefono.setText(persona.get_telefono())
-            self.linea_direccion.setText(persona.get_direccion())
+            self.linea_dni.setText(str(persona.get_DNI()))
+            self.linea_telefono.setText(str(persona.get_telefono()))
+            self.linea_direccion.setText(persona.get_direc())
             self.text.setText('MODIFICAR '+ lista.get_roll())
         else:
             self.text.setText('NUEVO '+ lista.get_roll() )
+        
+        self.boton_guardar.clicked.connect(self.guardar)
             
         
     def guardar(self):
@@ -323,19 +245,30 @@ class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
             telefono = int(self.linea_telefono.text())
         except(ValueError):
             error += ', telefono'
-        direccion = self.linea_direccion.text()
+        direccion = self.linea_direccion.text() + 'Concepcion del Uruguay'
         if (direccion == ''):
             error += ', direccion'
             
         if (error != ''): #verifica que los campos sean correctos
             self.mostra_error(error)
         else:
-            if(self.lista.control_agregar(Persona(nombre,apellido,dni,telefono,direccion))):
+            self.guardar_como(Persona(nombre,apellido,dni,telefono,direccion))            
+            
+            
+    def guardar_como(self,persona):
+        if self.pos == None :            
+            if(self.lista.control_agregar(persona)):
                 add_in_tabla(self.tabla,self.lista)
                 self.close()
             else:
-                self.mostra_error('El '+self.lista.get_roll()+' con el documento' +str(dni)+ ' ya existe.')
-
+                self.mostra_error('El '+self.lista.get_roll()+' con el documento' +str(persona.get_DNI())+ ' ya existe.')
+        else:
+            if self.lista.obtener_por_dni(persona.get_DNI()) == None :
+                self.lista.lista[self.pos] = persona
+                setChangeTabla(self.tabla , self.lista,self.pos,self.tabla.currentRow())
+                self.close()
+            else:
+                self.mostra_error('El '+self.lista.get_roll()+' con el documento' +str(persona.get_DNI())+ ' ya existe.')
         
         
     def mostra_error(self,detalles):

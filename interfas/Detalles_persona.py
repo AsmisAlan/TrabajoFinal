@@ -8,15 +8,21 @@ Created on Sun Oct 25 14:05:43 2015
 
 from PyQt4 import QtGui, uic 
 from interfas.Mapa import Mapa
+from interfas.ManejoTablas import *
+
 info = uic.loadUiType("interfas/detalles_persona.ui")[0]
 class Detalles_persona(QtGui.QDialog,info):
     
-    def __init__(self,persona,roll, parent=None):
+    def __init__(self,persona,roll,mascotas, parent=None):
         QtGui.QDialog.__init__(self, parent)
         self.setupUi(self)
         self.boton_mapa.clicked.connect(self.mapa)
         self.titulo.setText(roll)
         self.completar_campos(persona)
+        if(roll == 'CLIENTE'):
+            CargarTablaMascota(self.tabla_mascota,mascotas.mascotas_cliente(persona))
+        else:
+            CargarTablaMascota(self.tabla_mascota,mascotas.mascotas(persona))
         
     def completar_campos(self,persona):
         self.nombre.setText( persona.get_nombre() )

@@ -83,6 +83,9 @@
      <height>374</height>
     </rect>
    </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
    <property name="sortingEnabled">
     <bool>true</bool>
    </property>
@@ -174,6 +177,9 @@
      <width>781</width>
      <height>371</height>
     </rect>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
    </property>
    <attribute name="horizontalHeaderCascadingSectionResizes">
     <bool>true</bool>
@@ -333,8 +339,8 @@
     </item>
    </layout>
   </widget>
-  <zorder>tabla_mascota</zorder>
   <zorder>tabla_persona</zorder>
+  <zorder>tabla_mascota</zorder>
   <zorder>titulo_submenu</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>pushButton</zorder>
