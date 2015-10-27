@@ -23,6 +23,13 @@ class Control_mascota():
     def tamanio(self):
         return len(self.lista) 
     
+    def mascotas(self,paseador):
+        lista_aux = []
+        for mascota in self.lista : 
+            if( mascota.get_paseador() == paseador.get_DNI() ):    
+                lista_aux.append(mascota)
+        return lista_aux
+                
     
                     
         

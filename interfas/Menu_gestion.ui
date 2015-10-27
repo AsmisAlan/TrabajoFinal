@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Ico_Mascota.png</normaloff>../Ico_Mascota.png</iconset>
+    <normaloff>Ico_Mascota.png</normaloff>Ico_Mascota.png</iconset>
   </property>
   <widget class="QLabel" name="titulo_submenu">
    <property name="geometry">
@@ -333,8 +333,8 @@
     </item>
    </layout>
   </widget>
-  <zorder>tabla_persona</zorder>
   <zorder>tabla_mascota</zorder>
+  <zorder>tabla_persona</zorder>
   <zorder>titulo_submenu</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>pushButton</zorder>

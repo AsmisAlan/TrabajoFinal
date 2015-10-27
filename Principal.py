@@ -12,4 +12,3 @@ setItem (self, int row, int column, QTableWidgetItem item)
 from interfas.Menu import Menu
 
 m = Menu()
-

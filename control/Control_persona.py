@@ -46,7 +46,7 @@ class Control():
            if( self.tamanio() > 0):
                return random.choice(self.lista)
                
-    def cantidad_mascotas(self,lista_mascota):
+    def cantidad_mascotas(self,lista_mascota): #puede mejorarce capas :P
         paseadores_aptos = []
         control = 0
         for paseador in self.lista : 
@@ -57,15 +57,16 @@ class Control():
             control +=1
         return paseadores_aptos
         
-    def direcciones(self,lista_mascota,lista_cliente):
+    def direcciones(self,lista_mascota):
         direcciones = ''
-        control = 0
-        for cliente in lista_cliente : 
-            paseadores_aptos.append(0)
-            for mascota in lista_mascota.lista:
-                if(mascota.get_paseador() == paseador.get_DNI()):
-                    paseadores_aptos[control] +=1
-            control +=1
-        return paseadores_aptos
+        lista_aux = []
+        for mascota in lista_mascota : 
+            cliente = self.obtener_por_dni(mascota.get_dueño())
+            try:
+                lista_aux.index(cliente)
+            except:
+                lista_aux.append(cliente)
+                direcciones += cliente.get_direc() +' Concepcion del Uruguay |'
+        return direcciones
                 
                     

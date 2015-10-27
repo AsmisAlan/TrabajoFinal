@@ -163,7 +163,11 @@ class Menu(QtGui.QMainWindow,Menu):
         self.boton_mapa.setEnabled(True)
     
     def verRecorrido(self):
-        print('estoy en la vista de mapas de recorridos')
+        paseador = self.lista_paseos.obtener(self.tabla_paseos.currentRow()).get_paseador()  
+        direcciones = self.lista_clientes.direcciones(self.lista_mascotas.mascotas(paseador))
+        print(direcciones)        
+        self.mapa_recorrido = Mapa(direcciones)
+        self.mapa_recorrido.setVisible(True)
         
     def activar(self):
         if(self.lista_paseos.obtener(self.tabla_paseos.currentRow()).get_hora_llegada().find('-') > -1):
