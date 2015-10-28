@@ -6,22 +6,44 @@ Created on Wed Oct 21 04:35:48 2015
 """
 import random
 from PyQt4 import QtGui, uic, QtCore
-import interfas.Error_alta_baja
-
+from interfas.Error_alta_baja import Error_alta_baja
+from interfas.ManejoTablas import *
+from interfas.Mapa import Mapa
+from entidades.Mascota import Mascota
 
 dialogo_alta_baja_mascota= uic.loadUiType('interfas/alta_baja_mascota.ui')[0]
 
+
 class Submenu_alta_baja_mascota(QtGui.QWidget, dialogo_alta_baja_mascota):
     
-    def __init__ (self,parent = None):
+    def __init__ (self,lista_mascotas,lista_clientes,paseador,tabla,mascota = None,parent = None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
         self.barra_peso.valueChanged.connect(self.manejo_peso)
-        self.chico.show()
-        self.mediano.close()
-        self.grande.close()
         self.boton_guardar.clicked.connect(self.guardar)
         
+        self.lista_mascotas = lista_mascotas
+        self.lista_clientes = lista_clientes
+        self.chico.show()
+        self.mediano.close()
+        self.grande.close() 
+        self.box_cliente.addItems(self.lista_clientes.ListaNombres())
+        self.tabla = tabla
+        if(mascota != None):
+            self.linea_raza.setText(mascota.get_raza())
+            self.barra_peso.setValue(mascota.get_peso())
+            self.id = mascota.get_ID()
+            self.linea_id.setText(str (self.id))
+            self.manejo_peso()
+            self.linea_nombre().setText(mascota.get_nombre())
+            self.box_paseador.addItem(str(mascota.get_paseador() ))
+            self.paseador_asignado=mascota.get_paseador() 
+        else:
+            self.id = lista_mascotas.tamanio()
+            self.linea_id.setText(str (self.id))
+            self.paseador_asignado = paseador.get_DNI()
+            self.box_paseador.addItem(paseador.get_apellido_nombre())
+            
         
         
     def manejo_peso(self):
@@ -41,9 +63,9 @@ class Submenu_alta_baja_mascota(QtGui.QWidget, dialogo_alta_baja_mascota):
             
     def guardar(self):
         error = ''
-        #ID = len(lista_mascota)
-        
-        #Paseador = random.choice(lista_paseador).get_dni()
+        ID = self.id
+        paseador = self.paseador_asignado
+        dueño = self.lista_clientes.obtener(self.box_cliente.currentIndex()).get_DNI()
         nombre = self.linea_nombre.text()
         if (nombre == ''):
             error += ' nombre'
@@ -51,14 +73,21 @@ class Submenu_alta_baja_mascota(QtGui.QWidget, dialogo_alta_baja_mascota):
         if (raza == ''):
             error += ' raza'
         peso = self.Peso.intValue()
-        
         if(error !=''):
             self.mostra_error(error)
+        else:
+            self.lista_mascotas.agregar( Mascota(nombre , raza , peso ,ID,dueño ,paseador))
+            add_in_tabla_mascota(self.tabla , self.lista_mascotas )
+            self.close()
         
     def mostra_error(self,detalles):
-        self.error = Error_alta_baja.Error_alta_baja()
+        self.error = Error_alta_baja()
         self.error.setVisible(True)
         self.error.mensaje_error.setText('Error en el campo: ' + detalles)
-    
+        
+        
+        
+
+        
         
             

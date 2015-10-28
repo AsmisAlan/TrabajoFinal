@@ -8,6 +8,9 @@ Created on Wed Oct 21 15:30:06 2015
 
 from PyQt4 import QtGui, uic
 import time
+from interfas.ManejoTablas import *
+from interfas.Error_alta_baja import Error_alta_baja
+from entidades.Paseo import Paseo
 
 dialogo_alta_baja_paseo= uic.loadUiType('interfas/alta_baja_paseo.ui')[0]
 
