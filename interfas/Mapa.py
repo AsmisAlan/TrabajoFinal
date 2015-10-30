@@ -29,7 +29,8 @@ class Mapa(QtGui.QWidget,mapax):
         
     def set_direccion(self , direccion ):
         url = "https://maps.googleapis.com/maps/api/staticmap?"
-        center = "center=-32.4"+str(self.latitud)+",-58."+str(self.longitud)
+    
+        center ="center=-32.4"+str(self.latitud)+",-58."+str(self.longitud)
         zoom = "&zoom="+str(self.zoom)
         size = "&size=640x640"
         markers = "&markers=" + direccion 
@@ -37,7 +38,7 @@ class Mapa(QtGui.QWidget,mapax):
         imgformat = "&format=png"
         maptype="&maptype="+self.style    
         sensor = "&sensor=false"
-        url = url + center + zoom + size + markers+ path + imgformat + maptype + sensor
+        url = url + center + zoom + size + markers+ path + imgformat+maptype + sensor
         return url
         
     def zoomMas(self):

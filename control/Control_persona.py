@@ -66,15 +66,17 @@ class Control():
         return paseadores_aptos
         
     def direcciones(self,lista_mascota):
-        direcciones = ''
+        direcciones = '|'
         lista_aux = []
+        lista_aux.append("-32.4769132,-58.2309826")
+        espacio_verder = ['Club Regatas Uruguay Concepcion del Uruguay', 'Plaza Urquiza Concepcion del Uruguay','Costanera la Fraternidad Concepcion del Uruguay']
         for mascota in lista_mascota : 
             cliente = self.obtener_por_dni(mascota.get_dueño())
             try:
                 lista_aux.index(cliente)
             except:
-                lista_aux.append(cliente)
-                direcciones += cliente.get_direc() +' |'
-        return direcciones
+                lista_aux.append(cliente.get_direc())
+        lista_aux.append(random.choice(espacio_verder))
+        return direcciones.join(lista_aux)
                 
                     
