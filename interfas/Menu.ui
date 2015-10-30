@@ -152,6 +152,9 @@
      </item>
      <item>
       <widget class="QTableWidget" name="tabla_paseos">
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
        <attribute name="horizontalHeaderCascadingSectionResizes">
         <bool>true</bool>
        </attribute>

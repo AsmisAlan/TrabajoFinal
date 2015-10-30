@@ -37,6 +37,15 @@ class Control_mascota():
                 lista_aux.append(mascota)
         return lista_aux
     
+    def modificar_paseador(self,dni_viejo,dni_nuevo):
+        for mascota in self.lista : 
+            if( mascota.get_paseador() == dni_viejo):    
+                mascota.set_paseador(dni_nuevo)
                     
+    def modificar_dueño(self,dni_viejo,dni_nuevo):
+        for mascota in self.lista : 
+            if( mascota.get_dueño() == dni_viejo):    
+                mascota.set_dueño(dni_nuevo)
+
         
 

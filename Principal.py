@@ -7,8 +7,7 @@ Created on Wed Oct 21 01:15:03 2015
 QModelIndex i23123ndexFromItem (self, QTableWidgetItem item)
 setItem (self, int row, int column, QTableWidgetItem item)
 """
-
-
+    
 from interfas.Menu import Menu
 
 m = Menu()

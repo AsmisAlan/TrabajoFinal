@@ -36,7 +36,7 @@ class Menu_gestion(QtGui.QWidget,Menu_ge):
         pos = self.tabla_persona.item(self.tabla_persona.currentRow(),0) #devuelve el documento de la tabla
         if (pos != None ):
             doc = int (QtGui.QTableWidgetItem.text(pos) ) # combierte el documento qtable gidget en entero
-            self.nuevo = Submenu_alta_baja( self.lista,self.tabla_persona,self.lista.obtener_pos_dni(doc) )
+            self.nuevo = Submenu_alta_baja( self.lista,self.tabla_persona,self.lista_mascotas,self.lista.obtener_pos_dni(doc) )
             self.nuevo.setVisible(True)
 
     def nuevo(self):

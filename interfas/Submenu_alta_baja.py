@@ -18,7 +18,7 @@ dialogo_alta_baja = uic.loadUiType('interfas/alta_baja.ui')[0]
 
 class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
     
-    def __init__ (self,lista,tabla,pos= None, parent = None):
+    def __init__ (self,lista,tabla,mascotas= None,pos= None, parent = None):
         QtGui.QWidget.__init__(self, parent)
         self.setupUi(self)
         self.pos = pos
@@ -27,8 +27,10 @@ class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
        
         if(pos != None):
             persona = self.lista.lista[self.pos]
+            self.lista_mascotas = mascotas
             self.linea_nombre.setText(persona.get_nombre())
             self.linea_apellido.setText(persona.get_apellido())
+            self.dni_viejo = persona.get_DNI()
             self.linea_dni.setText(str(persona.get_DNI()))
             self.linea_telefono.setText(str(persona.get_telefono()))
             self.linea_direccion.setText(persona.get_direc())
@@ -75,13 +77,22 @@ class Submenu_alta_baja(QtGui.QWidget, dialogo_alta_baja):
             else:
                 self.mostra_error('El '+self.lista.get_roll()+' con el documento' +str(persona.get_DNI())+ ' ya existe.')
         else:
-            if self.lista.obtener_por_dni(persona.get_DNI()) == None :
+            if (self.dni_viejo == persona.get_DNI()):
                 self.lista.lista[self.pos] = persona
                 setChangeTabla(self.tabla , self.lista,self.pos,self.tabla.currentRow())
                 self.close()
             else:
-                self.mostra_error('El '+self.lista.get_roll()+' con el documento' +str(persona.get_DNI())+ ' ya existe.')
-        
+                if self.lista.obtener_por_dni(persona.get_DNI()) == None :
+                    self.lista.lista[self.pos] = persona
+                    if (self.lista.roll == 'CLIENTE'):
+                        self.lista_mascotas.modificar_dueño(self.dni_viejo,persona.get_DNI())
+                    else:
+                        self.lista_mascotas.modificar_paseador(self.dni_viejo,persona.get_DNI())
+                    setChangeTabla(self.tabla , self.lista,self.pos,self.tabla.currentRow())
+                    self.close()
+                else:
+                    self.mostra_error('El '+self.lista.get_roll()+' con el documento' +str(persona.get_DNI())+ ' ya existe.')
+            
         
     def mostra_error(self,detalles):
         self.error = Error_alta_baja()

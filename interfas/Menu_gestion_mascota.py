@@ -9,7 +9,7 @@ from PyQt4 import QtGui, uic ,QtCore
 from interfas.Submenu_alta_baja_mascota import Submenu_alta_baja_mascota
 from interfas.ManejoTablas import *
 from interfas.Mapa import Mapa
-from interfas.Detalles_persona import Detalles_persona
+from interfas.Detalle_mascota import Detalle_mascota
 
 Menu_ge = uic.loadUiType("interfas/Menu_gestion.ui")[0]
 
@@ -22,6 +22,7 @@ class Menu_gestion_mascota(QtGui.QWidget,Menu_ge):
          self.boton_detalles.clicked.connect(self.detalles)
          self.boton_mapa.clicked.connect(self.direccion)
          self.boton_nuevo.clicked.connect(self.nueva_mascota)
+         self.tabla_mascota.doubleClicked.connect(self.modificar)
          self.tabla_persona.close()
           
          #La variable por referencia Self.lista_clientes va a apuntar al mismo objeto que la lista_clientes.
@@ -45,10 +46,22 @@ class Menu_gestion_mascota(QtGui.QWidget,Menu_ge):
             self.error.setVisible(True)
             self.error.mensaje_error.setText('Debes tener al menos 1 cliente/paseador.')
             self.error.titulo.setText('Error')
+            
+    
+    def modificar(self):
+        pos = self.tabla_mascota.currentRow()
+        self.nuevo = Submenu_alta_baja_mascota( self.lista_mascotas,self.lista_clientes,self.lista_paseadores,self.tabla_mascota,self.lista_mascotas.lista[pos] )
+        self.nuevo.setVisible(True)
 
     
     def detalles(self):
-        print('detalles')
+        pos = self.tabla_mascota.currentRow()
+        if (pos != None):
+            mascota = self.lista_mascotas.lista[pos]
+            cliente = self.lista_clientes.obtener_por_dni(mascota.get_dueño())
+            paseador = self.lista_paseadores.obtener_por_dni(mascota.get_paseador())
+            self.nuevo = Detalle_mascota(mascota,cliente,paseador)
+            self.nuevo.setVisible(True)
     
     def direccion(self):
         print('mapa')
